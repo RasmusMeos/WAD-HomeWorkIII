@@ -4,14 +4,20 @@
     
     <div class="outer-container">
       <div class="signup-container">
-        <form class="signup-form">
+        <form class="signup-form" @submit.prevent="handleSignup">
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Email">
+            <input type="email" id="email" name="email" placeholder="Email" v-model="email" />
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Password">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password"
+              v-model="password"
+            />
           </div>
           <button type="submit" class="signup-button">Signup</button>
         </form>
@@ -22,18 +28,78 @@
   </div>
 </template>
 
-  
-  <script>
-  import Header from '@/components/CompoHeader.vue';
-  import Footer from '@/components/CompoFooter.vue';
-  
-  export default {
-    components: {
-      Header,
-      Footer
-    }
-  };
-  </script>
+<script>
+import Header from '@/components/CompoHeader.vue';
+import Footer from '@/components/CompoFooter.vue';
+
+export default {
+  components: {
+    Header,
+    Footer
+  },
+  data() {
+    return {
+      email: "",
+      password: "",
+      passwordValidationMessage: "",
+    };
+  },
+  methods: {
+    handleSignup() {
+      // Validate the password before attempting to submit
+      const regexUpperCase = /[A-Z]/;
+      const regexLowerCase = /[a-z]/;
+      const regexNumeric = /[0-9]/;
+      const regexUnderscore = /_/;
+
+      const isLengthValid = this.password.length >= 8 && this.password.length < 15;
+      const hasUpperCase = regexUpperCase.test(this.password);
+
+      // Count lowercase letters using a loop
+      let lowercaseCount = 0;
+      for (const char of this.password) {
+        if (regexLowerCase.test(char)) {
+          lowercaseCount++;
+        }
+      }
+
+      const hasTwoLowerCase = lowercaseCount >= 2;
+      
+      const hasNumeric = regexNumeric.test(this.password);
+      const startsWithUpperCase = regexUpperCase.test(this.password[0]);
+      const hasUnderscore = regexUnderscore.test(this.password);
+
+      if (
+        isLengthValid &&
+        hasUpperCase &&
+        hasTwoLowerCase &&
+        hasNumeric &&
+        startsWithUpperCase &&
+        hasUnderscore
+      ) {
+        this.passwordValidationMessage = "";
+        
+        
+      } else {
+        this.passwordValidationMessage =
+          "Password must meet the following conditions:\n" +
+          "- At least 8 and less than 15 characters\n" +
+          "- At least one uppercase letter\n" +
+          "- At least two lowercase letters\n" +
+          "- At least one numeric value\n" +
+          "- Start with an uppercase letter\n" +
+          "- Include the character '_'";
+        
+        // Password is not valid, show a popup message
+        window.alert(this.passwordValidationMessage);
+        return;
+      }
+
+
+    },
+  },
+};
+</script>
   
   <style scoped>
 
