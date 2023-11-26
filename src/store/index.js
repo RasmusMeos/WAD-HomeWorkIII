@@ -1,4 +1,3 @@
-// store/index.js
 import { createStore } from 'vuex';
 import postsData from '@/data/posts.json';
 
@@ -20,10 +19,11 @@ export default createStore({
         },
     },
     actions: {
+        //Methods for retrieving posts and resetting likes
         async fetchPosts() {
-            // Fetch posts from an API or other logic if needed
+            
         },
-        // Make sure resetLikes is defined here
+        
         resetLikes({ commit }) {
             commit('resetLikes');
         },

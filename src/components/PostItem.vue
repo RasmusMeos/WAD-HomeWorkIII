@@ -35,7 +35,7 @@ export default {
 
 <style scoped>
 .like-button {
-  width: 24px; /* Adjust the size of the thumbs-up image */
+  width: 24px; /* Adjusts the size of the thumbs-up image */
   height: 24px;
   cursor: pointer;
 }
@@ -48,7 +48,7 @@ export default {
   border-radius: 10px;
   padding: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px; /* Add margin between posts */
+  margin-bottom: 20px; /* Adds margin between posts */
 }
 
 .post:first-child {
@@ -82,7 +82,7 @@ export default {
   border-radius: 10px;
 }
 
-/* Add styling for the border between posts */
+/* Adds styling for the border between posts */
 .posts .post + .post {
   border-top: 1px solid #c5c5c5;
 }

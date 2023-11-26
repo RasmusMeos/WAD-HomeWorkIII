@@ -30,16 +30,13 @@
     },
     methods: {
       ...mapActions(['fetchPosts', 'resetLikes']),
-      // other methods...
-
-      // Add this method
+    
       handleResetLikes() {
         console.log('Reset Likes button clicked');
         this.resetLikes();
       },
     },
     created() {
-      // Assuming you have an action to fetch posts in your store
       this.fetchPosts();
     },
   };
@@ -71,8 +68,8 @@
   .reset-likes-button {
     margin-top: 20px;
     padding: 15px 20px;
-    background-color: #3498db;
-    color: #fff;
+    background-color: rgb(122, 175, 255);
+    color: black;
     border: none;
     border-radius: 25px;
     cursor: pointer;
@@ -81,7 +78,7 @@
   }
 
   .reset-likes-button:hover {
-    background-color: #2980b9;
+    background-color: rgb(72, 145, 255);
   }
   </style>
   

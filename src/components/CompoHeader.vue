@@ -17,7 +17,7 @@ export default {
 <style scoped>
 .topnav {
   background-color: #868686;
-  text-align: center; /* Center align the contents */
+  text-align: center; /*Aligns the contents of the topnav to the center */ 
   width: 100%;
   position: sticky;
   top: 0;
