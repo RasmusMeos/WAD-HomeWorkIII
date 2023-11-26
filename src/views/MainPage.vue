@@ -2,11 +2,11 @@
     <div>
       <Header />
       <div class="content-area">
-        <div class="sidebox"></div> <!-- Left panel -->
+        <div id="left-sidebox"></div> <!-- Left panel -->
         <div class="posts">
           <!-- Dynamic posts will be rendered here -->
         </div>
-        <div class="sidebox"></div> <!-- Right panel -->
+        <div id="right-sidebox"></div> <!-- Right panel -->
       </div>
       <Footer />
     </div>
@@ -29,13 +29,19 @@
   .content-area {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 0 20px;
     min-height: calc(100vh - 60px - 40px);
     gap: 20px;
   }
   
-  .sidebox {
+  #left-sidebox {
+    background-color: #868686;
+    width: 15%;
+    flex-grow: 1;
+    border-radius: 10px;
+  }
+  #right-sidebox {
     background-color: #868686;
     width: 15%;
     flex-grow: 1;

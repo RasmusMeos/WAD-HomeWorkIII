@@ -21,6 +21,7 @@ export default {
   padding: 10px 0;
   margin-top: 20px;
   border-radius: 10px;
+  bottom: 0;
 }
 .footer p {
   color: whitesmoke;

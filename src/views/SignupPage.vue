@@ -1,7 +1,8 @@
 <template>
-    <div>
-      <Header />
-      <div class = "page content"> 
+  <div>
+    <Header />
+    
+    <div class="outer-container">
       <div class="signup-container">
         <form class="signup-form">
           <div class="form-group">
@@ -16,9 +17,11 @@
         </form>
       </div>
     </div>
-      <Footer />
-    </div>
-  </template>
+  
+    <Footer />
+  </div>
+</template>
+
   
   <script>
   import Header from '@/components/CompoHeader.vue';
@@ -33,51 +36,68 @@
   </script>
   
   <style scoped>
-  .page-content {
-    padding-top: 60px;
-  }
-  .signup-container {
-    background-color: rgb(243, 255, 221); 
-    padding: 20px;
-    text-align: center;
-    border-radius: 10px;
-  }
+
+.outer-container {
+  background-color: #868686; 
+  padding: 30px; 
+  border-radius: 10px;
+  margin: auto; 
+  width: calc(100% - 121px);
+  margin-top: 10px;
+  height: 30vw;
+}
+
+.signup-container {
+  background-color: rgb(243, 255, 221);
+  text-align: center;
+  padding: 8%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+ 
   
-  .signup-form {
-    display: inline-block;
-    margin-top: 20px;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: black;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    background-color: white;
-    color: lightgray;
-  }
-  
-  .signup-button {
-    background-color: rgb(122, 175, 255);
-    color: black;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .signup-button:hover {
-    background-color: rgb(122, 175, 255); 
-  }
-  </style>
-  
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  color: black;
+  margin-right: 25px; /* Spacing between label and input */
+}
+
+.form-group input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: white;
+  color: black; 
+}
+
+.signup-button {
+  background-color: rgb(122, 175, 255);
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: center; /* Center the button */
+  margin-top: 20px; /* Spacing from the last input field */
+}
+
+.signup-button:hover {
+  background-color: rgb(72, 145, 255);
+}
+
+</style>
