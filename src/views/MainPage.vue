@@ -29,7 +29,7 @@
   .content-area {
     display: flex;
     justify-content: space-between;
-    margin-top: 60px;
+    margin-top: 20px;
     padding: 0 20px;
     min-height: calc(100vh - 60px - 40px);
     gap: 20px;

@@ -34,7 +34,7 @@
   
   <style scoped>
   .page-content {
-    padding-top: 80px;
+    padding-top: 60px;
   }
   .signup-container {
     background-color: rgb(243, 255, 221); 
