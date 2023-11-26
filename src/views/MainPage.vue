@@ -1,27 +1,47 @@
 <template>
-    <div>
-      <Header />
-      <div class="content-area">
-        <div id="left-sidebox"></div> <!-- Left panel -->
-        <div class="posts">
-          <!-- Dynamic posts will be rendered here -->
-        </div>
-        <div id="right-sidebox"></div> <!-- Right panel -->
+  <div>
+    <Header />
+    <div class="content-area">
+      <div class="sidebox"></div>
+      <div class="posts">
+        <Post v-for="post in posts" :key="post.id" :post="post" />
+        <button class="reset-likes-button" @click="handleResetLikes">Reset Likes</button>
       </div>
-      <Footer />
+      <div class="sidebox"></div>
     </div>
-  </template>
+    <Footer />
+  </div>
+</template>
   
   <script>
+  import { mapState, mapActions } from 'vuex';
   import Header from '@/components/CompoHeader.vue';
   import Footer from '@/components/CompoFooter.vue';
-  
+  import Post from '@/components/PostItem.vue';
   export default {
     name: 'MainPage',
     components: {
       Header,
-      Footer
-    }
+      Footer,
+      Post,
+    },
+    computed: {
+      ...mapState(['posts']),
+    },
+    methods: {
+      ...mapActions(['fetchPosts', 'resetLikes']),
+      // other methods...
+
+      // Add this method
+      handleResetLikes() {
+        console.log('Reset Likes button clicked');
+        this.resetLikes();
+      },
+    },
+    created() {
+      // Assuming you have an action to fetch posts in your store
+      this.fetchPosts();
+    },
   };
   </script>
   
@@ -34,14 +54,7 @@
     min-height: calc(100vh - 60px - 40px);
     gap: 20px;
   }
-  
-  #left-sidebox {
-    background-color: #868686;
-    width: 15%;
-    flex-grow: 1;
-    border-radius: 10px;
-  }
-  #right-sidebox {
+  .sidebox {
     background-color: #868686;
     width: 15%;
     flex-grow: 1;
@@ -54,6 +67,21 @@
     flex-direction: column;
     gap: 20px;
   }
-  
+
+  .reset-likes-button {
+    margin-top: 20px;
+    padding: 15px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: center;
+  }
+
+  .reset-likes-button:hover {
+    background-color: #2980b9;
+  }
   </style>
   

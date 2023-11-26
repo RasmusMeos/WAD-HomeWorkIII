@@ -1,8 +1,32 @@
-import { createStore } from 'vuex'
+// store/index.js
+import { createStore } from 'vuex';
+import postsData from '@/data/posts.json';
 
 export default createStore({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {}
-})
+    state: {
+        posts: postsData.Posts,
+    },
+    mutations: {
+        incrementLikes(state, postId) {
+            const post = state.posts.find((p) => p.id === postId);
+            if (post) {
+                post.likes += 1;
+            }
+        },
+        resetLikes(state) {
+            state.posts.forEach((post) => {
+                post.likes = 0;
+            });
+        },
+    },
+    actions: {
+        async fetchPosts() {
+            // Fetch posts from an API or other logic if needed
+        },
+        // Make sure resetLikes is defined here
+        resetLikes({ commit }) {
+            commit('resetLikes');
+        },
+    },
+    modules: {},
+});
