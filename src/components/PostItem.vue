@@ -4,13 +4,18 @@
       <img class="user-pic" src="/profile_pics/profile_pic.jpg" alt="User">
       <p v-if="post.title" class="post-title">{{ post.title }}</p>
       <p>{{ post.content }}</p>
-      <span class="post-date">{{ post.create_time }}</span>
+      <span class="post-date">{{new Date(post.create_time).toLocaleString() }}</span>
     </div>
     <div class="post-content">
       <img class="post-image" :src="post.photo_url" alt="Post" v-if="post.photo_url">
       <p>{{ post.body }}</p>
-      <button @click="incrementLikes(post.id)">Like</button>
-      <span>Likes: {{ post.likes }}</span>
+      <img
+          class="like-button"
+          src="images/like.jpg"
+      alt="Like"
+      @click="incrementLikes(post.id)"
+      />
+      <span class="like-count"> Likes:{{ post.likes }}</span>
     </div>
   </div>
 </template>
@@ -29,6 +34,15 @@ export default {
 </script>
 
 <style scoped>
+.like-button {
+  width: 24px; /* Adjust the size of the thumbs-up image */
+  height: 24px;
+  cursor: pointer;
+}
+
+.like-count {
+  margin-left: 5px;
+}
 .post {
   background-color: lightgray;
   border-radius: 10px;
